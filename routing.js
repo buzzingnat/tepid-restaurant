@@ -3,7 +3,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-// var fs = require(`fs`);
+var fs = require(`fs`);
 
 var table = require(`./data/table.js`);
 var waitlist = require(`./data/waitlist.js`);
@@ -18,12 +18,13 @@ var htmlRoutes = function(app) {
     console.log(`trying the /index path`);
     res.sendFile(path.join(__dirname, "view.html"));
   });
+  app.get("/home", function(req, res) {
+    console.log(`trying the /index path`);
+    res.sendFile(path.join(__dirname, "view.html"));
+  });
   app.get("/reserve", function(req, res) {
     console.log(`trying the /reserve path`);
     res.sendFile(path.join(__dirname, "reserve.html"));
-  });
-  app.get("/table", function(req, res) {
-    res.sendFile(path.join(__dirname, "table.html"));
   });
 }
 var jsonRoutes = function(app) {
@@ -39,10 +40,6 @@ var jsonRoutes = function(app) {
   });
 }
 
-
-
-// if table array is more than 5 long, then next entries go into waitlist file
-
 var postNewData = function(app) {
   console.log(`attempting to post data`);
   app.post('/', function (req, res) {
@@ -51,25 +48,31 @@ var postNewData = function(app) {
   // Create New Customers - takes in JSON input
   app.post("/api/new", function(req, res) {
     var newcustomer = req.body;
-
     console.log(newcustomer);
-    console.log(`new customer is running`);
-    if (tables.length < 5) {
-      tables.push(newcustomer);
-      fs.writeFile('data/table.js', JSON.stringify(tables), function (err) {
+    // if table array is more than 5 long
+    // then next entries go into waitlist file
+    if (table.length < 5) {
+      table.push(newcustomer);
+      fs.writeFile(
+        'data/table.js',
+        `var tableObject = ` + JSON.stringify(table, null, 2) + `; module.exports = tableObject;`,
+        function (err) {
         if (err) throw err;
         console.log(`Added ${newcustomer.customerName} to table.js`);
       });
     } else {
       waitlist.push(newcustomer);
-      fs.writeFile('data/waitlist.js', JSON.stringify(waitlist), function (err) {
+      fs.writeFile(
+        'data/waitlist.js',
+        `var waitlistObject = ` + JSON.stringify(waitlist, null, 2) + `; module.exports = waitlistObject;`,
+        function (err) {
         if (err) throw err;
         console.log(`Added ${newcustomer.customerName} to waitlist.js`);
       });
     }
 
     res.json(newcustomer);
-    res.send(newcustomer);
+    // res.send(newcustomer);
   });
 }
 

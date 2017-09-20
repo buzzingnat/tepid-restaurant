@@ -19,10 +19,10 @@
       <h3>Make your reservation</h3></center>
       <hr>
       <center>
-      
-            <a href="/add"><button type="button" class="btn btn-primary btn-lg">View Tables<img src="/open-iconic/svg/home.svg"></button></a>
 
-            <a href="/add"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span>Home</button></a>
+            <a href="/"><button type="button" class="btn btn-primary btn-lg">View Tables<img src="/open-iconic/svg/home.svg"></button></a>
+
+            <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span>Home</button></a>
     </center>
     </div>
 
@@ -41,6 +41,13 @@
               </div>
               <div id = "namebox">
                <input type="text" id="name" value="" size="80" >
+              </div>
+
+              <div id = "messagetext">
+                <p>Message</p>
+              </div>
+              <div id = "messagebox">
+               <input type="text" id="message" value="" size="80" >
               </div>
 
               <div id = "phonetext">
@@ -65,14 +72,14 @@
               <div id = "idbox">
                <input type="text" id="custid" value="" size="80" >
               </div>
-              
-              <div id="submit"> 
 
-                <a href="/add"><button type="submit" class="btn btn-primary btn-lg" id="add-btn">Submit<img src="/open-iconic/svg/home.svg"></button></a>
+              <div id="submit">
+
+                <a href="#"><button type="submit" class="btn btn-primary btn-lg" id="add-btn">Submit<img src="/open-iconic/svg/home.svg"></button></a>
               </div>
           </div>
 
-                
+
         </div>
       </div>
 
@@ -83,6 +90,7 @@
       event.preventDefault();
       var newReservation = {
         customerName: $("#name").val().trim(),
+        message: $("#message").val().trim(),
         phoneNumber: $("#phone").val().trim(),
         customerEmail: $("#email").val().trim(),
         customerID: $("#custid").val().trim()
@@ -91,8 +99,14 @@
       // Question: What does this code do??
       $.post("/api/new", newReservation)
       .done(function(data) {
-        console.log(data);
+        // console.log(data);
         alert("Adding Reservation...");
+        // clear input fields after info submitted
+        $("#name").val("");
+        $("#message").val("");
+        $("#phone").val("");
+        $("#email").val("");
+        $("#custid").val("");
       });
     });
   </script>

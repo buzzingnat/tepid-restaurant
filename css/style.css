@@ -1,14 +1,33 @@
-.list-group-tem-heading {
+
+#name {
   margin-top: -30px;
   margin-left: 80px;
-  color: red;
+  color: grey;
 }
 
-.list-group-item-text {
+#message {
   margin-top: -30px;
   margin-left: 80px;
+}
+
+#homejumbo {
+  color: #f2dede;
+  background-color: #a94442;
 }
 
 .jumbotron {
-  background-color: red;
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.jumbotron hr {
+  border-top-color: white;
+}
+
+#homejumbo hr {
+  border-top-color: white;
+}
+
+hr {
+  border-top-color: white;
 }

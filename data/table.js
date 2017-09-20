@@ -16,6 +16,7 @@ var tableObject = [
   {
     "customerName": "edward scissorhands",
     "phoneNumber": "555",
+    "message": undefined,
     "customerEmail": "blah@blue.com",
     "customerID": "198"
   },

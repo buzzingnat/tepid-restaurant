@@ -22,7 +22,6 @@
 
             <a href="/"><button type="button" class="btn btn-primary btn-lg">View Tables<img src="/open-iconic/svg/home.svg"></button></a>
 
-            <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span>Home</button></a>
     </center>
     </div>
 
@@ -34,49 +33,48 @@
         </div>
         <div class="row">
           <div class="col-md-9">
+            <form class="form-horizontal">
 
-
-              <div id = "nametext">
-                <p>Name</p>
-              </div>
-              <div id = "namebox">
-               <input type="text" id="name" value="" size="80" >
-              </div>
-
-              <div id = "messagetext">
-                <p>Message</p>
-              </div>
-              <div id = "messagebox">
-               <input type="text" id="message" value="" size="80" >
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                </div>
               </div>
 
-              <div id = "phonetext">
-                <p>Phone Number</p>
-              </div>
-              <div id = "phonebox">
-               <input type="text" id="phone" value="" size="80" >
-              </div>
-
-
-              <div id = "emailtext">
-                <p>Email</p>
-              </div>
-              <div id="emailbox">
-               <input type="text" id="email" value="" size="80" >
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="message">Message:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="message" placeholder="Optional message">
+                </div>
               </div>
 
-
-              <div id = "idtext">
-                <p>Unique ID</p>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="phone">Phone Number:</label>
+                <div class="col-sm-10">
+                  <input type="tel" class="form-control" id="phone" placeholder="(555) 555-5555">
+                </div>
               </div>
-              <div id = "idbox">
-               <input type="text" id="custid" value="" size="80" >
+
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" placeholder="example@hotmail.com">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Unique ID:</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="custid" placeholder="00001">
+                </div>
               </div>
 
               <div id="submit">
-
                 <a href="#"><button type="submit" class="btn btn-primary btn-lg" id="add-btn">Submit<img src="/open-iconic/svg/home.svg"></button></a>
               </div>
+
+            </form>
           </div>
 
 

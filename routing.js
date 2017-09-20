@@ -12,8 +12,7 @@ var waitlist = require(`./data/waitlist.js`);
 // =============================================================
 
 var htmlRoutes = function(app) {
-  console.log(`html routes are fine`);
-  // Basic route that sends the user first to the AJAX Page
+  // Basic route that sends the user to the home page
   app.get("/", function(req, res) {
     console.log(`trying the /index path`);
     res.sendFile(path.join(__dirname, "view.html"));
@@ -25,6 +24,15 @@ var htmlRoutes = function(app) {
   app.get("/reserve", function(req, res) {
     console.log(`trying the /reserve path`);
     res.sendFile(path.join(__dirname, "reserve.html"));
+  });
+  app.get("/table", function(req, res) {
+    console.log(`trying the /table path`);
+    res.sendFile(path.join(__dirname, "table.html"));
+  });
+  // make css stylesheet accessible
+  app.get("/css/style.css", function(req, res) {
+    console.log(`trying the /css/style path`);
+    res.sendFile(path.join(__dirname, "css/style.css"));
   });
 }
 var jsonRoutes = function(app) {
